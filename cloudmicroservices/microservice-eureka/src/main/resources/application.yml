@@ -1,0 +1,29 @@
+server:
+  port: 10003
+
+spring:
+  application:
+    name: '@artifactId@'
+
+
+# Eureka 配置信息
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    # 通过eureka.client.registerWithEureka：false和fetchRegistry：false来表明自己是一个eureka server
+    fetch-registry: false
+    register-with-eureka: false
+  server:
+    eviction-interval-timer-in-ms: 4000
+    enable-self-preservation: false
+    renewal-percent-threshold: 0.9
+
+
+logging:
+  level:
+    com: DEBUG
+    org: DEBUG
